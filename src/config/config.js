@@ -12,6 +12,10 @@ const _config = {
   cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
   cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
+  hiveMqBrokerUrl: process.env.HIVEMQ_BROKER_URL,
+  hiveMqPort: process.env.HIVEMQ_PORT,
+  hiveMqUsername: process.env.HIVEMQ_USERNAME,
+  hiveMqPassword: process.env.HIVEMQ_PASSWORD,
 };
 
 export const config = {
