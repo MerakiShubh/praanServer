@@ -20,9 +20,8 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-import todoRouter from "./routes/todo.route.js";
 import userRouter from "./routes/user.route.js";
-app.use("/api/v1/todo", todoRouter);
+import addDeviceRouter from "./routes/device.route.js";
 app.use("/api/v1/user", userRouter);
-
+app.use("/api/v1/device", addDeviceRouter);
 export { app };
