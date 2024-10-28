@@ -1,5 +1,6 @@
 import mqtt from "mqtt";
 import { config } from "../config/config.js";
+import { handleIncomingData } from "../controllers/mqtt.controller.js";
 
 const brokerUrl = `mqtts://${config.get("hiveMqBrokerUrl")}`;
 const options = {
@@ -13,23 +14,19 @@ const client = mqtt.connect(brokerUrl, options);
 client.on("connect", () => {
   console.log("Connected to HiveMQ Cloud Broker");
 
-  client.subscribe("myTopic", (err) => {
+  // Subscribe to the topic
+  client.subscribe("iot/device/data", (err) => {
     if (!err) {
-      console.log("Successfully subscribed to myTopic");
+      console.log("Successfully subscribed to iot/device/data");
     } else {
-      console.log("Subscription error:", err);
-    }
-  });
-
-  client.publish("myTopic", "Hello from Express App!", (err) => {
-    if (err) {
-      console.log("Publish error:", err);
+      console.error("Subscription error:", err);
     }
   });
 });
 
+// Use the handleIncomingData function to process messages
 client.on("message", (topic, message) => {
-  console.log(`Received message from ${topic}: ${message.toString()}`);
+  handleIncomingData(topic, message);
 });
 
 client.on("error", (err) => {
