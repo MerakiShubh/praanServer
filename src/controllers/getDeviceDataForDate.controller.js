@@ -2,9 +2,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { DeviceData } from "../models/deviceData.model.js";
 
-/**
- * Controller to fetch device data for a specific date and calculate averages.
- */
 const getDeviceDataForDate = asyncHandler(async (req, res) => {
   const { date } = req.query;
 
@@ -25,13 +22,11 @@ const getDeviceDataForDate = asyncHandler(async (req, res) => {
   });
 
   if (dataRecords.length === 0) {
-    return res
-      .status(404)
-      .json(
-        new ApiResponse(404, `Data is not available for ${date}`, {
-          data: null,
-        })
-      );
+    return res.status(404).json(
+      new ApiResponse(404, `Data is not available for ${date}`, {
+        data: null,
+      })
+    );
   }
 
   const averages = dataRecords.reduce(

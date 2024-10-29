@@ -14,7 +14,7 @@ const client = mqtt.connect(brokerUrl, options);
 client.on("connect", () => {
   console.log("Connected to HiveMQ Cloud Broker");
 
-  // Subscribe to the topic
+  // Subscribe to the topic -> which is iot/device/data incoming data from Hive
   client.subscribe("iot/device/data", (err) => {
     if (!err) {
       console.log("Successfully subscribed to iot/device/data");
@@ -24,7 +24,7 @@ client.on("connect", () => {
   });
 });
 
-// Use the handleIncomingData function to process messages
+//IncomingData function to process messages
 client.on("message", (topic, message) => {
   handleIncomingData(topic, message);
 });

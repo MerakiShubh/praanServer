@@ -1,7 +1,8 @@
 import { Device } from "../models/device.model.js";
 import { DeviceData } from "../models/deviceData.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
-export const handleIncomingData = async (topic, message) => {
+export const handleIncomingData = asyncHandler(async (topic, message) => {
   try {
     if (topic === "iot/device/data") {
       const data = JSON.parse(message.toString());
@@ -26,4 +27,4 @@ export const handleIncomingData = async (topic, message) => {
   } catch (err) {
     console.error("Error handling MQTT message:", err);
   }
-};
+});
