@@ -22,6 +22,8 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.route.js";
 import addDeviceRouter from "./routes/device.route.js";
+import dataRouter from "./routes/realtimedata.route.js";
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/device", addDeviceRouter);
+app.use("/api/v1/data", dataRouter);
 export { app };
