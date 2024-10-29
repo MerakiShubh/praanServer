@@ -32,10 +32,10 @@ connectDB()
     });
 
     // Schedule the cron job to publish random data every 20 seconds
-    // cron.schedule("*/20 * * * * *", () => {
-    //   console.log("Publishing random data to HiveMQ...");
-    //   publishRandomData();
-    // });
+    cron.schedule("*/20 * * * * *", () => {
+      console.log("Publishing random data to HiveMQ...");
+      publishRandomData();
+    });
   })
   .catch((err) => {
     console.log("❌ MONGO DB connection failed!", err);
