@@ -57,3 +57,8 @@ HIVEMQ_PORT=
 HIVEMQ_USERNAME=
 HIVEMQ_PASSWORD=
 ```
+
+
+## Leetcode problem
+
+- **Task - 1**: [Longest Increasing path in matrix](https://github.com/MerakiShubh/ChatCord/blob/main/Longest%20Increasing%20Path%20in%20a%20Matrix.cpp)
